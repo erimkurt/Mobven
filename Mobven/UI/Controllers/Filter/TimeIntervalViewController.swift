@@ -10,13 +10,20 @@ import UIKit
 
 class TimeIntervalViewController: UIViewController {
 
-    var contentWeather: Weather!
+    // IBOutlet
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    
+    // Public
+    public var contentWeather: Weather!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+}
+
+// MARK: - Prepare
+extension TimeIntervalViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == Segue.kListAccordingToTimeInterval) {
             let vc = segue.destination as! PreviewTableViewController

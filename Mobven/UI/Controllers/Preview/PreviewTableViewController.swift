@@ -10,57 +10,37 @@ import UIKit
 
 class PreviewTableViewController: UITableViewController {
 
-    var contentWeather: Weather!
-    var todayWeather: [List] = []
-    var startDate: Date!
-    var endDate: Date!
+    // Public
+    public var contentWeather: Weather!
+    public var startDate: Date!
+    public var endDate: Date!
+    
+    // Private
+    private var todayWeather: [List] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (startDate != nil) && (endDate != nil) {
-            self.title = "\(startDate.dateToString(dateFormat: DateFormat.kWithoutTimeDateFormat))/\(endDate.dateToString(dateFormat: DateFormat.kWithoutTimeDateFormat))"
-            self.contentWeather.list.forEach{ list in
-                var date: Date = Date()
-                date.stringToDate(dateString: list.dt_txt, dateFormat: DateFormat.kNormalDateFormat)
-                
-                //Interval Date Counts
-                let intervalOfSelect: Int = calculateDaysBetweenTwoDates(start: startDate, end: endDate)
-                let intervalOfDate: Int = calculateDaysBetweenTwoDates(start: startDate, end: date)
-                
-                if intervalOfDate <= intervalOfSelect{
-                    todayWeather.append(list)
-                }
-            }
-        }else{
-            self.title = contentWeather.city.name
-            self.contentWeather.list.forEach{ list in
-                let today = Date()
-                var date: Date = Date()
-                date.stringToDate(dateString: list.dt_txt, dateFormat: DateFormat.kNormalDateFormat)
-                if date.isEqualTo(today){
-                    todayWeather.append(list)
-                }
+        let isDate = (startDate != nil) && (endDate != nil)
+        
+        self.title = isDate ? "\(startDate.dateToString(dateFormat: DateFormat.kWithoutTimeDateFormat))/\(endDate.dateToString(dateFormat: DateFormat.kWithoutTimeDateFormat))" : contentWeather.city.name
+        self.contentWeather.list.forEach{ list in
+            let today = Date()
+            var date: Date = Date()
+            date.stringToDate(dateString: list.dt_txt, dateFormat: DateFormat.kNormalDateFormat)
+            
+            let isAppend = isDate ? date.isBetweenTwoDates(firstDate: startDate, secondDate: endDate) : date.isEqualTo(today)
+            
+            if isAppend{
+                todayWeather.append(list)
             }
         }
     }
-    
-    private func calculateDaysBetweenTwoDates(start: Date, end: Date) -> Int {
-        let currentCalendar = Calendar.current
-        guard let start = currentCalendar.ordinality(of: .day, in: .era, for: start) else {
-            return 0
-        }
-        guard let end = currentCalendar.ordinality(of: .day, in: .era, for: end) else {
-            return 0
-        }
-        return end - start
-    }
-    
 }
 
 // MARK: - Prepare
 extension PreviewTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "timeInterval") {
+        if (segue.identifier == Segue.kTimeInterval) {
             let vc = segue.destination as! TimeIntervalViewController
             vc.contentWeather = self.contentWeather
         }

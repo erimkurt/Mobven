@@ -14,6 +14,7 @@ struct Storyboard{
 
 struct Segue{
     static let kListAccordingToTimeInterval = "listAccordingToTimeInterval"
+    static let kTimeInterval = "timeInterval"
 }
 
 struct Controller{

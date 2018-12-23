@@ -10,7 +10,8 @@ import UIKit
 
 class MainViewController: UITableViewController {
     
-    var elementArray: [Weather] = []
+    // Private
+    private var elementArray: [Weather] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -37,15 +37,23 @@ extension Date{
     }
     
     // MARK: - Calculator
-    func isEqualTo(_ date: Date) -> Bool {
+    public func isEqualTo(_ date: Date) -> Bool {
         return self.dateToString(dateFormat: DateFormat.kWithoutTimeDateFormat) == date.dateToString(dateFormat: DateFormat.kWithoutTimeDateFormat)
     }
     
-    func isGreaterThan(_ date: Date) -> Bool {
-        return self > date
+    public func isBetweenTwoDates(firstDate: Date, secondDate: Date) -> Bool {
+        // Interval Date Counts
+        let intervalOfSelect: Int = calculateDaysBetweenTwoDates(start: firstDate, end: secondDate)
+        let intervalOfDate: Int = calculateDaysBetweenTwoDates(start: firstDate, end: self)
+        
+        return intervalOfDate <= intervalOfSelect
     }
     
-    func isSmallerThan(_ date: Date) -> Bool {
-        return self < date
+    private func calculateDaysBetweenTwoDates(start: Date, end: Date) -> Int {
+        let currentCalendar = Calendar.current
+        guard let start = currentCalendar.ordinality(of: .day, in: .era, for: start), let end = currentCalendar.ordinality(of: .day, in: .era, for: end) else {
+            return 0
+        }
+        return end - start
     }
 }
