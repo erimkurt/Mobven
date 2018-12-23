@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Şehir Ara" id="XQx-7B-62b">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="XQx-7B-62b">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -60,6 +60,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Mobven" id="FJw-ak-cau"/>
                     <connections>
+                        <outlet property="searchBar" destination="XQx-7B-62b" id="GUY-bd-OL9"/>
                         <segue destination="Wen-a0-yKV" kind="push" id="Lmx-nF-pRr"/>
                     </connections>
                 </tableViewController>
@@ -149,12 +150,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="11G-D2-Vm6">
-                        <barButtonItem key="rightBarButtonItem" title="Tarih seç" id="PU6-1J-9wd">
+                        <barButtonItem key="rightBarButtonItem" title="Button" id="PU6-1J-9wd">
                             <connections>
                                 <segue destination="Tgy-yZ-JnW" kind="push" identifier="timeInterval" id="gUV-rf-AEw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tabBarItemRight" destination="PU6-1J-9wd" id="42a-s8-xbT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ez-vs-u9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -177,7 +181,7 @@
                                     <!--2018-09-28 20:22:33 +0000-->
                                 </date>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Başlangıç" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yt4-xE-ARG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yt4-xE-ARG">
                                 <rect key="frame" x="16" y="72" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="mXI-7B-TAl"/>
@@ -195,7 +199,7 @@
                                     <!--2018-09-28 20:22:33 +0000-->
                                 </date>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitiş" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUY-TX-8Oi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUY-TX-8Oi">
                                 <rect key="frame" x="16" y="288" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="mfB-KB-w15"/>
@@ -210,7 +214,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="b7r-uE-96d"/>
                                 </constraints>
-                                <state key="normal" title="Listele"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="Wen-a0-yKV" kind="push" identifier="listAccordingToTimeInterval" id="9Zr-S0-olB"/>
                                 </connections>
@@ -238,8 +242,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="oEc-Dy-4yS"/>
                     <connections>
-                        <outlet property="endDatePicker" destination="394-cS-Ivk" id="1vt-sw-4CD"/>
-                        <outlet property="startDatePicker" destination="4HF-hT-6vq" id="XKb-yc-crm"/>
+                        <outlet property="buttonDone" destination="k5W-Zy-uwE" id="57S-tA-9cU"/>
+                        <outlet property="labelEndDate" destination="HUY-TX-8Oi" id="Fb9-gM-NqK"/>
+                        <outlet property="labelStartDate" destination="Yt4-xE-ARG" id="gG4-fk-boY"/>
+                        <outlet property="pickerEndDate" destination="394-cS-Ivk" id="Wf0-WS-niW"/>
+                        <outlet property="pickerStartDate" destination="4HF-hT-6vq" id="NUh-ft-o9K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQZ-gG-Fen" userLabel="First Responder" sceneMemberID="firstResponder"/>

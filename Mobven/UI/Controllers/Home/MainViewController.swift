@@ -10,11 +10,15 @@ import UIKit
 
 class MainViewController: UITableViewController {
     
+    // IBOutlet
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     // Private
     private var elementArray: [Weather] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.searchBar.placeholder = LocalizableStrings.searchCity.localized()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,7 +91,7 @@ extension MainViewController {
             DispatchQueue.main.async {
                 self.hiddenLoadingView()
                 //Not Found
-                self.showAlertView("Hata", "Şehir bulunamadı. Lütfen tekrar deneyiniz.")
+                self.showAlertView(LocalizableStrings.error.localized(), LocalizableStrings.notFound.localized())
             }
         })
     }

@@ -9,7 +9,10 @@
 import UIKit
 
 class PreviewTableViewController: UITableViewController {
-
+    
+    // IBOutlet
+    @IBOutlet weak var tabBarItemRight: UIBarButtonItem!
+    
     // Public
     public var contentWeather: Weather!
     public var startDate: Date!
@@ -20,6 +23,10 @@ class PreviewTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // UI
+        self.tabBarItemRight.title = LocalizableStrings.selectDate.localized()
+        
         let isDate = (startDate != nil) && (endDate != nil)
         
         self.title = isDate ? "\(startDate.dateToString(dateFormat: DateFormat.kWithoutTimeDateFormat))/\(endDate.dateToString(dateFormat: DateFormat.kWithoutTimeDateFormat))" : contentWeather.city.name
@@ -54,7 +61,7 @@ extension PreviewTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PreviewCell", for: indexPath) as! PreviewTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.kPreviewTableViewCell, for: indexPath) as! PreviewTableViewCell
         
         if todayWeather.count > indexPath.row {
             let content: List = todayWeather[indexPath.row]

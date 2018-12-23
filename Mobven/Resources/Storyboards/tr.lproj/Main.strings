@@ -1,0 +1,33 @@
+
+/* Class = "UINavigationItem"; title = "Mobven"; ObjectID = "FJw-ak-cau"; */
+"FJw-ak-cau.title" = "Mobven";
+
+/* Class = "UILabel"; text = "Bitiş"; ObjectID = "HUY-TX-8Oi"; */
+"HUY-TX-8Oi.text" = "Bitiş";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KCE-v8-4U1"; */
+"KCE-v8-4U1.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Tarih seç"; ObjectID = "PU6-1J-9wd"; */
+"PU6-1J-9wd.title" = "Tarih seç";
+
+/* Class = "UISearchBar"; placeholder = "Şehir Ara"; ObjectID = "XQx-7B-62b"; */
+"XQx-7B-62b.placeholder" = "Şehir Ara";
+
+/* Class = "UILabel"; text = "Başlangıç"; ObjectID = "Yt4-xE-ARG"; */
+"Yt4-xE-ARG.text" = "Başlangıç";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZVe-GE-0lY"; */
+"ZVe-GE-0lY.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bFy-Ck-R5R"; */
+"bFy-Ck-R5R.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eqd-GY-NeB"; */
+"eqd-GY-NeB.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Listele"; ObjectID = "k5W-Zy-uwE"; */
+"k5W-Zy-uwE.normalTitle" = "Listele";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qU8-Ke-UpP"; */
+"qU8-Ke-UpP.text" = "Label";

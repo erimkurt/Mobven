@@ -12,7 +12,7 @@ import MBProgressHUD
 extension UIViewController {
     public func showAlertView(_ title: String, _ message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizableStrings.ok.localized(), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -11,14 +11,22 @@ import UIKit
 class TimeIntervalViewController: UIViewController {
 
     // IBOutlet
-    @IBOutlet weak var startDatePicker: UIDatePicker!
-    @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var labelStartDate: UILabel!
+    @IBOutlet weak var labelEndDate: UILabel!
+    @IBOutlet weak var pickerStartDate: UIDatePicker!
+    @IBOutlet weak var pickerEndDate: UIDatePicker!
+    @IBOutlet weak var buttonDone: UIButton!
     
     // Public
     public var contentWeather: Weather!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // UI
+        self.labelStartDate.text = LocalizableStrings.start.localized()
+        self.labelEndDate.text = LocalizableStrings.end.localized()
+        self.buttonDone.setTitle(LocalizableStrings.list.localized(), for: .normal)
     }
 }
 
@@ -28,8 +36,8 @@ extension TimeIntervalViewController {
         if (segue.identifier == Segue.kListAccordingToTimeInterval) {
             let vc = segue.destination as! PreviewTableViewController
             vc.contentWeather = self.contentWeather
-            vc.startDate = self.startDatePicker.date
-            vc.endDate = self.endDatePicker.date
+            vc.startDate = self.pickerStartDate.date
+            vc.endDate = self.pickerEndDate.date
         }
     }
 }
