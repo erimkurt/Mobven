@@ -19,41 +19,12 @@ class MainViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         self.elementArray.forEach{ weather in
-            refreshWeather(cityName: weather.city.name, replace: true)
+            getWeather(cityName: weather.city.name, replace: true)
         }
-    }
-    
-    func refreshWeather(cityName: String, replace: Bool){
-        WebHelper().getWeatherForecast(cityName: cityName, success: {response in
-            DispatchQueue.main.async {
-                self.hiddenLoadingView()
-                let result: Weather = (response as? Weather)!
-                if result.cod == "200"{
-                    //Success
-                    if replace{
-                        if let i = self.elementArray.index(where: { $0.city.name == cityName }) {
-                            self.elementArray[i] = result
-                        }
-                    }else{
-                        self.elementArray.insert(result, at: 0)
-                    }
-                    self.tableView.reloadData()
-                }else{
-                    //Not Found
-                    self.showAlertView("Hata", "Şehir bulunamadı. Lütfen tekrar deneyiniz.")
-                }
-            }
-        }, errorString: { error in
-            DispatchQueue.main.async {
-                self.hiddenLoadingView()
-                //Not Found
-                self.showAlertView("Hata", "Şehir bulunamadı. Lütfen tekrar deneyiniz.")
-            }
-        })
     }
 }
 
-//MARK: UITableViewDataSource
+// MARK: UITableViewDataSource
 extension MainViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return elementArray.count
@@ -70,7 +41,7 @@ extension MainViewController {
     }
 }
 
-//MARK: UITableViewDelegate
+// MARK: UITableViewDelegate
 extension MainViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.elementArray.count > indexPath.row {
@@ -84,11 +55,39 @@ extension MainViewController {
     }
 }
 
-//MARK: UISearchBarDelegate
+// MARK: UISearchBarDelegate
 extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         showLoadingView()
-        self.refreshWeather(cityName: searchBar.text!, replace: false)
+        self.getWeather(cityName: searchBar.text!, replace: false)
+    }
+}
+
+// MARK: Service
+extension MainViewController {
+    func getWeather(cityName: String, replace: Bool){
+        ServiceManager().getWeatherForecast(cityName: cityName, success: {response in
+            DispatchQueue.main.async {
+                self.hiddenLoadingView()
+                
+                let result: Weather = (response as? Weather)!
+                
+                if replace{
+                    if let i = self.elementArray.index(where: { $0.city.name == cityName }) {
+                        self.elementArray[i] = result
+                    }
+                }else{
+                    self.elementArray.insert(result, at: 0)
+                }
+                self.tableView.reloadData()
+            }
+        }, errorString: { error in
+            DispatchQueue.main.async {
+                self.hiddenLoadingView()
+                //Not Found
+                self.showAlertView("Hata", "Şehir bulunamadı. Lütfen tekrar deneyiniz.")
+            }
+        })
     }
 }
