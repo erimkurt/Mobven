@@ -26,6 +26,7 @@
 		D02118D2215E9E8F00AF8C9A /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02118D1215E9E8F00AF8C9A /* CityTableViewCell.swift */; };
 		D02118D4215EB47900AF8C9A /* PreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02118D3215EB47900AF8C9A /* PreviewTableViewController.swift */; };
 		D02118D6215EB58300AF8C9A /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02118D5215EB58300AF8C9A /* PreviewTableViewCell.swift */; };
+		D0CF547B21CFA6BF00D0CA61 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D02118B2215E820B00AF8C9A /* Info.plist */; };
 		D0F4D608215EC49E00F3EFC3 /* TimeIntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4D607215EC49E00F3EFC3 /* TimeIntervalViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,20 +107,16 @@
 		D02118A5215E820500AF8C9A /* Mobven */ = {
 			isa = PBXGroup;
 			children = (
-				D02118D0215E9E1000AF8C9A /* Cell */,
-				D02118CD215E9C4E00AF8C9A /* Screen */,
-				D02118BA215E89DC00AF8C9A /* Model */,
 				D02118A6215E820500AF8C9A /* AppDelegate.swift */,
-				D02118AA215E820500AF8C9A /* Main.storyboard */,
-				D02118AD215E820B00AF8C9A /* Assets.xcassets */,
-				D02118AF215E820B00AF8C9A /* LaunchScreen.storyboard */,
-				D02118B2215E820B00AF8C9A /* Info.plist */,
-				D02118B8215E866A00AF8C9A /* WebHelper.swift */,
+				D0CF547121CFA48B00D0CA61 /* UI */,
+				D0CF547021CFA48600D0CA61 /* Components */,
+				D0CF546E21CFA40A00D0CA61 /* Resources */,
+				D0CF546D21CFA3EC00D0CA61 /* Supporting Files */,
 			);
 			path = Mobven;
 			sourceTree = "<group>";
 		};
-		D02118BA215E89DC00AF8C9A /* Model */ = {
+		D02118BA215E89DC00AF8C9A /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				D02118BB215E8AA800AF8C9A /* Weather.swift */,
@@ -132,26 +129,142 @@
 				D02118C9215E915500AF8C9A /* ListSys.swift */,
 				D02118CB215E91B700AF8C9A /* Coordinate.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		D02118CD215E9C4E00AF8C9A /* Screen */ = {
+		D0CF546D21CFA3EC00D0CA61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D02118B2215E820B00AF8C9A /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0CF546E21CFA40A00D0CA61 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF547C21CFA74700D0CA61 /* Identifiers */,
+				D0CF546F21CFA45100D0CA61 /* Storyboards */,
+				D02118AD215E820B00AF8C9A /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D0CF546F21CFA45100D0CA61 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D02118AA215E820500AF8C9A /* Main.storyboard */,
+				D02118AF215E820B00AF8C9A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D0CF547021CFA48600D0CA61 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF547221CFA4B000D0CA61 /* Network */,
+				D02118BA215E89DC00AF8C9A /* Models */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D0CF547121CFA48B00D0CA61 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF547421CFA4FF00D0CA61 /* Views */,
+				D0CF547321CFA4F500D0CA61 /* Controllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D0CF547221CFA4B000D0CA61 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D02118B8215E866A00AF8C9A /* WebHelper.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D0CF547321CFA4F500D0CA61 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF547521CFA55200D0CA61 /* Home */,
+				D0CF547621CFA56000D0CA61 /* Preview */,
+				D0CF547721CFA56D00D0CA61 /* Filter */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D0CF547421CFA4FF00D0CA61 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF547A21CFA64C00D0CA61 /* Cell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0CF547521CFA55200D0CA61 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				D02118CE215E9C6500AF8C9A /* MainViewController.swift */,
-				D02118D3215EB47900AF8C9A /* PreviewTableViewController.swift */,
-				D0F4D607215EC49E00F3EFC3 /* TimeIntervalViewController.swift */,
 			);
-			path = Screen;
+			path = Home;
 			sourceTree = "<group>";
 		};
-		D02118D0215E9E1000AF8C9A /* Cell */ = {
+		D0CF547621CFA56000D0CA61 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				D02118D3215EB47900AF8C9A /* PreviewTableViewController.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		D0CF547721CFA56D00D0CA61 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				D0F4D607215EC49E00F3EFC3 /* TimeIntervalViewController.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		D0CF547821CFA62400D0CA61 /* City */ = {
 			isa = PBXGroup;
 			children = (
 				D02118D1215E9E8F00AF8C9A /* CityTableViewCell.swift */,
+			);
+			path = City;
+			sourceTree = "<group>";
+		};
+		D0CF547921CFA63600D0CA61 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
 				D02118D5215EB58300AF8C9A /* PreviewTableViewCell.swift */,
 			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		D0CF547A21CFA64C00D0CA61 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF547921CFA63600D0CA61 /* Preview */,
+				D0CF547821CFA62400D0CA61 /* City */,
+			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		D0CF547C21CFA74700D0CA61 /* Identifiers */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF547D21CFA75000D0CA61 /* Controllers */,
+			);
+			path = Identifiers;
+			sourceTree = "<group>";
+		};
+		D0CF547D21CFA75000D0CA61 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0CF547B21CFA6BF00D0CA61 /* Info.plist in Resources */,
 				D02118B1215E820B00AF8C9A /* LaunchScreen.storyboard in Resources */,
 				D02118AE215E820B00AF8C9A /* Assets.xcassets in Resources */,
 				D02118AC215E820500AF8C9A /* Main.storyboard in Resources */,
@@ -432,7 +546,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Mobven/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Mobven/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,7 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Mobven/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Mobven/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
