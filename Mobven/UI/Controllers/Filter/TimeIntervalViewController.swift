@@ -18,7 +18,7 @@ class TimeIntervalViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "listAccordingToTimeInterval") {
+        if (segue.identifier == Segue.kListAccordingToTimeInterval) {
             let vc = segue.destination as! PreviewTableViewController
             vc.contentWeather = self.contentWeather
             vc.startDate = self.startDatePicker.date

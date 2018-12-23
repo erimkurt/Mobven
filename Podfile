@@ -6,6 +6,11 @@ target 'Mobven' do
   use_frameworks!
 
   # Pods for Mobven
-pod 'Alamofire', '~> 4.7'
-pod 'JGProgressHUD'
+  
+  # UI
+  pod 'MBProgressHUD'
+  
+  # Network
+  pod 'Alamofire', '~> 4.7'
+  
 end

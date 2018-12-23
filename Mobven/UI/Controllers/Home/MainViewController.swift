@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import JGProgressHUD
 
 class MainViewController: UITableViewController {
-
+    
     var elementArray: [Weather] = []
-    let hud = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +26,7 @@ class MainViewController: UITableViewController {
     func refreshWeather(cityName: String, replace: Bool){
         WebHelper().getWeatherForecast(cityName: cityName, success: {response in
             DispatchQueue.main.async {
-                self.hud.dismiss(afterDelay: 0)
+                self.hiddenLoadingView()
                 let result: Weather = (response as? Weather)!
                 if result.cod == "200"{
                     //Success
@@ -42,58 +40,55 @@ class MainViewController: UITableViewController {
                     self.tableView.reloadData()
                 }else{
                     //Not Found
-                    self.showAlertView()
+                    self.showAlertView("Hata", "Şehir bulunamadı. Lütfen tekrar deneyiniz.")
                 }
             }
         }, errorString: { error in
             DispatchQueue.main.async {
-                self.hud.dismiss(afterDelay: 0)
+                self.hiddenLoadingView()
                 //Not Found
-                self.showAlertView()
+                self.showAlertView("Hata", "Şehir bulunamadı. Lütfen tekrar deneyiniz.")
             }
         })
     }
 }
 
-//MARK: Table Delegate
-extension MainViewController{
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let content: Weather = self.elementArray[indexPath.row]
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "PreviewTableViewController") as! PreviewTableViewController
-        vc.contentWeather = content
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
+//MARK: UITableViewDataSource
+extension MainViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return elementArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let content: Weather = self.elementArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.kCityTableViewCell, for: indexPath) as! CityTableViewCell
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! CityTableViewCell
-        cell.cityLabel.text = content.city.name
+        if self.elementArray.count > indexPath.row {
+            let content: Weather = self.elementArray[indexPath.row]
+            cell.cityLabel.text = content.city.name
+        }
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return UITableView.automaticDimension
     }
 }
 
-//MARK: Search Bar Delegate
-extension MainViewController: UISearchBarDelegate{
+//MARK: UITableViewDelegate
+extension MainViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.elementArray.count > indexPath.row {
+            let content: Weather = self.elementArray[indexPath.row]
+            
+            let storyboard = UIStoryboard(name: Storyboard.kMain, bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: Controller.kPreviewTableViewController) as! PreviewTableViewController
+            vc.contentWeather = content
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+//MARK: UISearchBarDelegate
+extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        hud.show(in: self.view)
+        showLoadingView()
         self.refreshWeather(cityName: searchBar.text!, replace: false)
-    }
-    
-    func showAlertView(){
-        let alert = UIAlertController(title: "Hata", message: "Şehir bulunamadı. Lütfen tekrar deneyiniz.", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
 }

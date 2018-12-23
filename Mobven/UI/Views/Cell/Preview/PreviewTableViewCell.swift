@@ -14,9 +14,15 @@ class PreviewTableViewCell: UITableViewCell {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var tempMaxMinLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        weatherTitleLabel.text = "N/A"
+        tempLabel.text = "N/A"
+        tempMaxMinLabel.text = "N/A"
+        dateLabel.text = "N/A"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

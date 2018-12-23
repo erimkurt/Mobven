@@ -27,6 +27,10 @@
 		D02118D4215EB47900AF8C9A /* PreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02118D3215EB47900AF8C9A /* PreviewTableViewController.swift */; };
 		D02118D6215EB58300AF8C9A /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02118D5215EB58300AF8C9A /* PreviewTableViewCell.swift */; };
 		D0CF547B21CFA6BF00D0CA61 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D02118B2215E820B00AF8C9A /* Info.plist */; };
+		D0CF548021CFAFB700D0CA61 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF547F21CFAFB700D0CA61 /* Date+Extension.swift */; };
+		D0CF548621CFC84200D0CA61 /* UITableViewCell+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF548521CFC84200D0CA61 /* UITableViewCell+Base.swift */; };
+		D0CF548921CFC98200D0CA61 /* UIViewController+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF548821CFC98200D0CA61 /* UIViewController+Base.swift */; };
+		D0CF548C21CFCB5000D0CA61 /* IdentifiersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF548B21CFCB5000D0CA61 /* IdentifiersConstants.swift */; };
 		D0F4D608215EC49E00F3EFC3 /* TimeIntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4D607215EC49E00F3EFC3 /* TimeIntervalViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +58,10 @@
 		D02118D1215E9E8F00AF8C9A /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		D02118D3215EB47900AF8C9A /* PreviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTableViewController.swift; sourceTree = "<group>"; };
 		D02118D5215EB58300AF8C9A /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
+		D0CF547F21CFAFB700D0CA61 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		D0CF548521CFC84200D0CA61 /* UITableViewCell+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Base.swift"; sourceTree = "<group>"; };
+		D0CF548821CFC98200D0CA61 /* UIViewController+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Base.swift"; sourceTree = "<group>"; };
+		D0CF548B21CFCB5000D0CA61 /* IdentifiersConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiersConstants.swift; sourceTree = "<group>"; };
 		D0F4D607215EC49E00F3EFC3 /* TimeIntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +170,9 @@
 		D0CF547021CFA48600D0CA61 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D0CF548721CFC96500D0CA61 /* ViewController */,
+				D0CF548421CFC82800D0CA61 /* TableViewCell */,
+				D0CF547E21CFAEFA00D0CA61 /* Date */,
 				D0CF547221CFA4B000D0CA61 /* Network */,
 				D02118BA215E89DC00AF8C9A /* Models */,
 			);
@@ -255,16 +266,33 @@
 		D0CF547C21CFA74700D0CA61 /* Identifiers */ = {
 			isa = PBXGroup;
 			children = (
-				D0CF547D21CFA75000D0CA61 /* Controllers */,
+				D0CF548B21CFCB5000D0CA61 /* IdentifiersConstants.swift */,
 			);
 			path = Identifiers;
 			sourceTree = "<group>";
 		};
-		D0CF547D21CFA75000D0CA61 /* Controllers */ = {
+		D0CF547E21CFAEFA00D0CA61 /* Date */ = {
 			isa = PBXGroup;
 			children = (
+				D0CF547F21CFAFB700D0CA61 /* Date+Extension.swift */,
 			);
-			path = Controllers;
+			path = Date;
+			sourceTree = "<group>";
+		};
+		D0CF548421CFC82800D0CA61 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF548521CFC84200D0CA61 /* UITableViewCell+Base.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		D0CF548721CFC96500D0CA61 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF548821CFC98200D0CA61 /* UIViewController+Base.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,12 +373,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mobven/Pods-Mobven-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -382,9 +410,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0CF548C21CFCB5000D0CA61 /* IdentifiersConstants.swift in Sources */,
 				D02118C4215E8CD600AF8C9A /* ListWeather.swift in Sources */,
+				D0CF548921CFC98200D0CA61 /* UIViewController+Base.swift in Sources */,
 				D02118CF215E9C6500AF8C9A /* MainViewController.swift in Sources */,
+				D0CF548021CFAFB700D0CA61 /* Date+Extension.swift in Sources */,
 				D02118C8215E913100AF8C9A /* ListClouds.swift in Sources */,
+				D0CF548621CFC84200D0CA61 /* UITableViewCell+Base.swift in Sources */,
 				D02118D6215EB58300AF8C9A /* PreviewTableViewCell.swift in Sources */,
 				D02118CA215E915500AF8C9A /* ListSys.swift in Sources */,
 				D02118D4215EB47900AF8C9A /* PreviewTableViewController.swift in Sources */,

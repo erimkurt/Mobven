@@ -15,6 +15,8 @@ class CityTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        cityLabel.text = "N/A"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
